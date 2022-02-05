@@ -27,6 +27,7 @@ namespace Assets.RW.Scripts
         private Text livesLabel;
 
         private int lives;
+        
         [SerializeField] 
         private MusicControl music;
 
@@ -107,6 +108,7 @@ namespace Assets.RW.Scripts
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 Time.timeScale = 1f;
             });
+            
             restartButton.gameObject.SetActive(false);
         }
     }
