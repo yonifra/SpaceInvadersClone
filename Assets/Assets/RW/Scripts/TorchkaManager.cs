@@ -69,12 +69,12 @@ namespace RayWenderlich.SpaceInvadersUnity
             torchkaPPU = torchkaSprite.pixelsPerUnit;
             torchkaPivot = torchkaSprite.pivot;
 
-            int halfCount = totalCount / 2;
-            float startShift = totalCount % 2 == 0 ? halfCount - 0.5f : halfCount;
+            var halfCount = totalCount / 2;
+            var startShift = totalCount % 2 == 0 ? halfCount - 0.5f : halfCount;
 
-            Vector2 currentPos =
+            var currentPos =
                 (Vector2)spawnMidPoint.position + spacing * startShift * Vector2.left;
-            for (int i = 0; i < totalCount; i++)
+            for (var i = 0; i < totalCount; i++)
             {
                 var torchka = Instantiate(torchkaPrefab, currentPos, Quaternion.identity);
                 torchka.manager = this;
@@ -84,8 +84,8 @@ namespace RayWenderlich.SpaceInvadersUnity
 
         public bool CheckForDamage(Texture2D tex, Vector2 contactPosition)
         {
-            int coordX = Mathf.RoundToInt(contactPosition.x * torchkaPPU + torchkaPivot.x);
-            int coordY = Mathf.RoundToInt(contactPosition.y * torchkaPPU + torchkaPivot.y);
+            var coordX = Mathf.RoundToInt(contactPosition.x * torchkaPPU + torchkaPivot.x);
+            var coordY = Mathf.RoundToInt(contactPosition.y * torchkaPPU + torchkaPivot.y);
 
             if (tex.GetPixel(coordX, coordY).a == 0) 
             {
@@ -95,10 +95,10 @@ namespace RayWenderlich.SpaceInvadersUnity
             var dir = (Random.value > 0.5) ? -1 : 1;
             var startX = coordX + damageTexture.width / 2 * -dir;
             coordY += damageTexture.height / 2 * -dir;
-            for (int y = 0; y < damageTexture.height; y++)
+            for (var y = 0; y < damageTexture.height; y++)
             {
                 coordX = startX;
-                for (int x = 0; x < damageTexture.width; x++)
+                for (var x = 0; x < damageTexture.width; x++)
                 {
                     var thisPix = tex.GetPixel(coordX, coordY);
                     thisPix.a *= damagePixelArray[x + y * damageTexture.width].a;

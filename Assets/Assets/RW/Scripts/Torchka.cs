@@ -49,7 +49,7 @@ namespace RayWenderlich.SpaceInvadersUnity
         //anyone in layer 'Hero' or 'Enemy' will trigger this
         private void OnTriggerStay2D(Collider2D other)
         {
-            bool damage = manager.CheckForDamage(spriteRenderer.sprite.texture,
+            var damage = manager.CheckForDamage(spriteRenderer.sprite.texture,
                  spriteRenderer.transform.InverseTransformPoint(other.transform.position));
 
             //Uncomment the following after adding the 'Bullet' code:

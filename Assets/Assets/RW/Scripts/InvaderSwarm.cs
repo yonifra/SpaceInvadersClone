@@ -147,11 +147,11 @@ namespace RayWenderlich.SpaceInvadersUnity
             minY = cannonPosition.position.y;
             minX = spawnStartPoint.position.x;
 
-            GameObject swarm = new GameObject { name = "Swarm" };
+            var swarm = new GameObject { name = "Swarm" };
             Vector2 currentPos = spawnStartPoint.position;
             pointsMap = new System.Collections.Generic.Dictionary<string, int>();
 
-            int rowIndex = 0;
+            var rowIndex = 0;
             foreach (var invaderType in invaderTypes)
             {
                 rowCount += invaderType.rowCount;
@@ -167,7 +167,7 @@ namespace RayWenderlich.SpaceInvadersUnity
 
                 for (int i = 0, len = invaderType.rowCount; i < len; i++)
                 {
-                    for (int j = 0; j < columnCount; j++)
+                    for (var j = 0; j < columnCount; j++)
                     {
                         var invader = new GameObject() { name = invaderName };
                         invader.AddComponent<SimpleAnimator>().sprites = invaderType.sprites;
@@ -185,7 +185,7 @@ namespace RayWenderlich.SpaceInvadersUnity
                 }
             }
             
-            for (int i = 0; i < columnCount; i++)
+            for (var i = 0; i < columnCount; i++)
             {
                 var bulletSpawner = Instantiate(bulletSpawnerPrefab);
                 bulletSpawner.transform.SetParent(swarm.transform);
@@ -227,9 +227,9 @@ namespace RayWenderlich.SpaceInvadersUnity
 
         private void MoveInvaders(float x, float y)
         {
-            for (int i = 0; i < rowCount; i++)
+            for (var i = 0; i < rowCount; i++)
             {
-                for (int j = 0; j < columnCount; j++)
+                for (var j = 0; j < columnCount; j++)
                 {
                     invaders[i, j].Translate(x, y, 0);
                 }
